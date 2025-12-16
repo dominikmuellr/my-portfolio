@@ -1,0 +1,36 @@
+# .github/workflows/docker-publish.yml
+name: Publish Portfolio to Docker Hub
+
+on:
+  push:
+    # Trigger this workflow only when changes are pushed to the 'main' branch
+    branches: ["main"]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: 2. Set up Docker Buildx (Essential for multi-stage builds)
+        uses: docker/setup-buildx-action@v3
+
+      - name: 3. Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: 4. Build and Push the Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: . # Use the Dockerfile in the root directory
+          push: true # Push the image to the registry after building
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/portfolio:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: 5. Display success message
+        run: echo "Successfully built and pushed the image to Docker Hub!"
