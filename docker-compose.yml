@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  web:
+    # Use the Dockerfile in the current directory
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    # Map container port 80 to host port 8080 (or any other port you prefer)
+    ports:
+      - "8080:80"
+
+    container_name: portfolio_web
+    restart: always
