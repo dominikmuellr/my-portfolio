@@ -1,0 +1,11 @@
+FROM node:24-alpine
+WORKDIR /app
+
+# Install dependencies first
+COPY package.json package-lock.json* ./
+RUN npm install
+
+# We link the rest via volumes in compose
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
