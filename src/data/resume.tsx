@@ -4,22 +4,32 @@ import { HomeIcon, NotebookIcon } from "lucide-react";
 export const DATA = {
   name: "Dominik Mueller",
   initials: "DM",
-  url: "http://localhost:8080",
-  location: "Albacete, Castile-La Mancha, Spain",
-  locationLink: "https://www.google.com/maps/place/Albacete",
+  url: "https://github.com/dominikmuellr",
+  location: "Albacete, Spain",
+  locationLink: "https://www.google.com/maps/place/Albacete,+Spain",
   description:
-    "Early State-certified Educator (Early Childhood) turned Front-end Developer. I love building things and helping people.",
+    "From the kindergarten to the codebase. German Front-end Developer based in Spain, building privacy-first apps.",
   summary:
-    "At the end of 2023, I quit my job as an Early Childhood Educator to go fulltime into learning everything about Front-End Developement.",
+    "In late 2023, I traded my career as an Early Childhood Educator for code. I moved from Germany to Albacete to focus full-time on Front-End Development. I bring the patience and adaptability of a teacher into building intuitive, user-friendly software like Trudido.",
   avatarUrl: "/me.jpg",
-  skills: ["HTML5", "CSS", "JavaScript", "Node.js", "React.js"],
+  skills: [
+    "HTML5",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "Node.js",
+    "React.js",
+    "Flutter",
+    "Dart",
+    "Docker",
+    "Linux",
+  ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
     email: "mailto:mllrdominik@gmail.com",
-    tel: "+123456789",
     social: {
       GitHub: {
         name: "GitHub",
@@ -64,14 +74,14 @@ export const DATA = {
       logoUrl: "/bonn.png",
       start: "May 2021",
       end: "Oct 2022",
-      description: "",
+      description: "Managed groups of children, handled documentation, and coordinated with parents and state agencies. Developed strong patience and crisis management skills.",
     },
   ],
   education: [
     {
       school: "IWK Koeln",
       href: "https://www.iwk.eu/",
-      degree: "xxxxxxxxxxxxx",
+      degree: "State Certified Educator",
       logoUrl: "/iwk.png",
       start: "xxxx",
       end: "xxxx",
@@ -79,7 +89,7 @@ export const DATA = {
     {
       school: "Hochschule Bonn-Rhein-Sieg University of Applied Science",
       href: "https://www.h-brs.de/de",
-      degree: "xxxxxxxxxxxx",
+      degree: "Technical Journalism (Incomplete)",
       logoUrl: "/hbrs.jpg",
       start: "xxxx",
       end: "xxxx",
@@ -87,7 +97,7 @@ export const DATA = {
     {
       school: "Universitaet Siegen",
       href: "https://www.uni-siegen.de/",
-      degree: "xxxxxxxxxxx",
+      degree: "Business Informatics (Incomplete)",
       logoUrl: "/siegen.png",
       start: "xxxx",
       end: "xxxx",
@@ -95,27 +105,23 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Chat Collect",
-      href: "https://chatcollect.com",
-      dates: "Jan 2024 - Feb 2024",
+      title: "Trudido",
+      href: "https://github.com/dominikmuellr/trudido",
+      dates: "September 2025 - Present",
       active: true,
       description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+        "[Trudido](https://github.com/dominikmuellr/trudido) is a privacy-first, minimalist to-do list app built with Flutter and Material You. Designed to respect user data with zero tracking and offline-first functionality",
       technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
+        "Dart",
+        "Kotlin",
+        "Material You",
+        "Android",
       ],
       links: [
         {
-          type: "Website",
-          href: "https://chatcollect.com",
-          icon: "globe",
+          type: "Source",
+          href: "https://github.com/dominikmuellr/trudido",
+          icon: "github",
         },
       ],
       image: "",

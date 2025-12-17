@@ -2,7 +2,6 @@
 
 import { Badge } from "@/components/ui/badge";
 import {
-  Card,
   CardContent,
   CardFooter,
   CardHeader,
@@ -13,6 +12,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { Icons } from "@/components/icons";
+import { MagicCard } from "@/components/magicui/magic-card"; // Import MagicCard
+import { useTheme } from "next-themes"; // Import useTheme for the glow effect
 
 interface Props {
   title: string;
@@ -43,15 +44,21 @@ export function ProjectCard({
   links,
   className,
 }: Props) {
+  const { theme } = useTheme();
+
   return (
-    <Card
-      className={
-        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"
-      }
-    >
+    <MagicCard
+  gradientFrom={theme === "dark" ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.1)"}
+  gradientSize={350}
+  gradientOpacity={0.5}
+  className={cn(
+    "border-none shadow-none",
+    className
+  )}
+>
       <Link
         href={href || "#"}
-        className={cn("block cursor-pointer", className)}
+        className="block cursor-pointer"
       >
         {video && (
           <video
@@ -73,7 +80,7 @@ export function ProjectCard({
           />
         )}
       </Link>
-      <CardHeader className="px-2">
+      <CardHeader className="px-2 bg-transparent">
         <div className="space-y-1">
           <CardTitle className="mt-1 text-base">{title}</CardTitle>
           <time className="font-sans text-xs">{dates}</time>
@@ -85,7 +92,7 @@ export function ProjectCard({
           </Markdown>
         </div>
       </CardHeader>
-      <CardContent className="mt-auto flex flex-col px-2">
+      <CardContent className="mt-auto flex flex-col px-2 bg-transparent">
         {tags && tags.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-1">
             {tags?.map((tag) => (
@@ -100,13 +107,12 @@ export function ProjectCard({
           </div>
         )}
       </CardContent>
-      <CardFooter className="px-2 pb-2">
+      <CardFooter className="px-2 pb-2 bg-transparent">
         {links && links.length > 0 && (
           <div className="flex flex-row flex-wrap items-start gap-1">
             {links?.map((link, idx) => {
               const IconComponent = Icons[link.icon as keyof typeof Icons];
 
-              // ✅ Skip if icon doesn't exist
               if (!IconComponent) {
                 return null;
               }
@@ -123,6 +129,6 @@ export function ProjectCard({
           </div>
         )}
       </CardFooter>
-    </Card>
+    </MagicCard>
   );
 }
