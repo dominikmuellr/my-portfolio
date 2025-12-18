@@ -156,3 +156,25 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
         }
     }
 }
+
+/* src/app/globals.css */
+
+/* 1. Force the scrollbar space to always exist so the page can't jump */
+html {
+  scrollbar-gutter: stable !important;
+}
+
+/* 2. Block Radix from adding padding/margin to the body when menus open */
+body[style] {
+  margin-right: 0px !important;
+  padding-right: 0px !important;
+  overflow: auto !important;
+}
+
+/* 3. Ensure the Portal doesn't affect page width */
+[data-radix-portal] {
+  position: fixed;
+  width: 0;
+  height: 0;
+  z-index: 9999;
+}

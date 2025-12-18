@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".", // <--- ADD THIS LINE
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,6 +22,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts", 
+    "**/*.ts", 
+    "**/*.tsx", 
+    ".next/types/**/*.ts",
+    "src/**/*" // <--- ADD THIS to be safe
+  ],
   "exclude": ["node_modules"]
 }

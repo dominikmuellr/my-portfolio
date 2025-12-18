@@ -6,25 +6,26 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
+// Fix for Metadata: Pointing to 'en' as default since Metadata doesn't have access to the Client Context
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
-
   title: {
-    default: DATA.name,
-    template: `%s | ${DATA.name}`,
+    default: DATA.en.name,
+    template: `%s | ${DATA.en.name}`,
   },
-  description: DATA.description,
+  description: DATA.en.description,
   openGraph: {
-    title: `${DATA.name}`,
-    description: DATA.description,
+    title: `${DATA.en.name}`,
+    description: DATA.en.description,
     url: "http://localhost:3000",
-    siteName: `${DATA.name}`,
+    siteName: `${DATA.en.name}`,
     locale: "en_US",
     type: "website",
   },
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: `${DATA.name}`,
+    title: `${DATA.en.name}`,
     card: "summary_large_image",
   },
   verification: {
@@ -63,10 +64,12 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
-          <TooltipProvider delayDuration={0}>
-            {children}
-            <Navbar />
-          </TooltipProvider>
+          <LanguageProvider>
+            <TooltipProvider delayDuration={0}>
+              {children}
+              <Navbar />
+            </TooltipProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
